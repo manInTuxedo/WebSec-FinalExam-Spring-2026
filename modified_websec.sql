@@ -116,7 +116,7 @@ CREATE TABLE `courses` (
   PRIMARY KEY (`id`),
   KEY `courses_instructor_id_foreign` (`instructor_id`),
   CONSTRAINT `courses_instructor_id_foreign` FOREIGN KEY (`instructor_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,6 +125,7 @@ CREATE TABLE `courses` (
 
 LOCK TABLES `courses` WRITE;
 /*!40000 ALTER TABLE `courses` DISABLE KEYS */;
+INSERT INTO `courses` VALUES (1,'Cyber and Information Security','Cyber and Information Security course teaches you how to protect networks, devices, programs, and data from unauthorized access, attacks, and damage. Students learn foundational and advanced concepts to defend digital environments, manage security risks, and ensure system integrity.',3,'2026-06-10 05:47:37','2026-06-10 05:47:37'),(2,'Web Development','This web development course equips you with the essential skills to design, build, and deploy modern websites and web applications. You will master foundational coding languages (HTML, CSS, JavaScript) and transition into advanced front-end frameworks and back-end technologies to create fully functional, dynamic projects.',3,'2026-06-10 05:48:15','2026-06-10 05:48:15'),(3,'Probability and Statistics','A Probability and Statistics course introduces the mathematical foundations of analyzing data and modeling uncertainty. It equips students with the tools to collect, analyze, and interpret data, drawing meaningful insights from random events and variable populations',3,'2026-06-10 05:48:44','2026-06-10 05:48:44'),(4,'IoT','An Internet of Things (IoT) course teaches you how to design, build, and deploy connected smart devices that collect and analyze data. You will master the core architecture—including sensors, gateways, and cloud platforms—and connect hardware to wireless networks like Wi-Fi, Bluetooth, or LoRaWAN.',3,'2026-06-10 05:50:18','2026-06-10 05:50:18'),(5,'Digital Forensics','A digital forensics course trains professionals to identify, acquire, preserve, and analyze digital evidence from computers, mobile devices, and networks to investigate cybercrimes. It focuses on recovering deleted files, tracking attacker behavior, and producing legally admissible reports for court or corporate hearings',3,'2026-06-10 05:50:49','2026-06-10 05:50:49'),(6,'Linux and Shell Programming','This course provides a comprehensive introduction to the Linux operating system and command-line automation. Participants will learn to navigate the file system, manage system resources, and write powerful shell scripts to automate repetitive tasks. It bridges the gap between basic computer usage and advanced system administration or software development.',3,'2026-06-10 05:58:15','2026-06-10 05:58:15');
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -147,7 +148,7 @@ CREATE TABLE `enrollments` (
   KEY `enrollments_course_id_foreign` (`course_id`),
   CONSTRAINT `enrollments_course_id_foreign` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE,
   CONSTRAINT `enrollments_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -156,6 +157,7 @@ CREATE TABLE `enrollments` (
 
 LOCK TABLES `enrollments` WRITE;
 /*!40000 ALTER TABLE `enrollments` DISABLE KEYS */;
+INSERT INTO `enrollments` VALUES (1,2,4,'active','2026-06-10 06:00:07','2026-06-10 06:00:07'),(2,2,6,'active','2026-06-10 06:00:09','2026-06-10 06:00:09');
 /*!40000 ALTER TABLE `enrollments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -351,7 +353,7 @@ CREATE TABLE `model_has_roles` (
 
 LOCK TABLES `model_has_roles` WRITE;
 /*!40000 ALTER TABLE `model_has_roles` DISABLE KEYS */;
-INSERT INTO `model_has_roles` VALUES (1,'App\\Models\\User',3),(3,'App\\Models\\User',2),(3,'App\\Models\\User',5),(3,'App\\Models\\User',6);
+INSERT INTO `model_has_roles` VALUES (1,'App\\Models\\User',3),(2,'App\\Models\\User',6),(2,'App\\Models\\User',7),(3,'App\\Models\\User',2),(3,'App\\Models\\User',5);
 /*!40000 ALTER TABLE `model_has_roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -544,7 +546,7 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -553,7 +555,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (2,'Abdullah','abdullah@gmail.com','2026-06-10 05:13:23','$2y$12$ZrOW0ZmaSU73MQ5BXoeY/OrHIUmFCslpEWSQ6QuTyl//XV9HzmmcG','DzLnXKdOey184PXhs0HNJakhtbdRkZJXQSj81upszQz5iB0RqNs4JwtGBsNl','2026-06-10 05:13:23','2026-06-10 05:13:23'),(3,'Admin','admin@secure-study.com','2026-06-10 05:13:23','$2y$12$d.6eXtpOpZ6ecYI/gxObPuZcAf2cK.VOGACUog41KyM6lkGJkm5W2','H7Lq6gzkoy24GUYIVRripS8MNgJoZGn38cjWhQzpEOnygtWbaRZQkKTSj8ZY','2026-06-10 05:13:23','2026-06-10 05:13:23'),(5,'Seif','seif@gmail.com',NULL,'$2y$12$AgUAnUUT5UxxugtZBZdhyu0LIMIqrQ31NeMv2bKGLKkCbVf6J4ggm',NULL,'2026-06-10 05:21:50','2026-06-10 05:21:50'),(6,'Moaz','moaz@gmail.com',NULL,'$2y$12$IuEqEBBNA8LQyMZ/EBqRB.y21G77.aZQE0ERYYWHeDWrM4W3Nc/7i',NULL,'2026-06-10 05:27:22','2026-06-10 05:27:22');
+INSERT INTO `users` VALUES (2,'Abdullah','abdullah@gmail.com','2026-06-10 05:13:23','$2y$12$ZrOW0ZmaSU73MQ5BXoeY/OrHIUmFCslpEWSQ6QuTyl//XV9HzmmcG','c5xQZyBKfhUwmjApBvjHpaxZ54MAuH4F1H6bFo1wo2MCpcYpmTVvD7giqRXH','2026-06-10 05:13:23','2026-06-10 05:13:23'),(3,'Admin','admin@secure-study.com','2026-06-10 05:13:23','$2y$12$d.6eXtpOpZ6ecYI/gxObPuZcAf2cK.VOGACUog41KyM6lkGJkm5W2','N8GGG2hOtYU3Aycw1l4Np7kZFE7ZamzfIz9bqmkCCaP6lYPm42G9spJrT6dy','2026-06-10 05:13:23','2026-06-10 05:13:23'),(5,'Seif','seif@gmail.com',NULL,'$2y$12$AgUAnUUT5UxxugtZBZdhyu0LIMIqrQ31NeMv2bKGLKkCbVf6J4ggm',NULL,'2026-06-10 05:21:50','2026-06-10 05:21:50'),(6,'Moaz','moaz@gmail.com',NULL,'$2y$12$IuEqEBBNA8LQyMZ/EBqRB.y21G77.aZQE0ERYYWHeDWrM4W3Nc/7i',NULL,'2026-06-10 05:27:22','2026-06-10 05:27:22'),(7,'Mohammed','mohammed@gmail.com',NULL,'$2y$12$RbZW3tCXCWf1QVliR4nL5OY/gdPRw7jvDbM4VBRXV7JB9aTmneErS',NULL,'2026-06-10 05:35:58','2026-06-10 05:35:58');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -566,4 +568,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-06-10 11:33:59
+-- Dump completed on 2026-06-10 12:13:37
